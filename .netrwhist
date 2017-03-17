@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/etc/make.profile'
+let g:netrw_dirhist_2='/home/fernando/.juniper_networks'
+let g:netrw_dirhist_3='/home/fernando/Teaching/Programacion/proyecto'
+let g:netrw_dirhist_4='/home/fernando/.kde4/share/apps/kconf_update'
+let g:netrw_dirhist_5='/home/fernando/Dropbox/Teaching/Programacion/Instrucciones de Control1'
+let g:netrw_dirhist_6='/home/fsanchez/Dropbox/Teaching/Arquitectura/testOpenCL/primes'
