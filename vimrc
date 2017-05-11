@@ -15,10 +15,10 @@ Plugin 'raimondi/delimitmate'
 Plugin 'bling/vim-bufferline'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'flazz/vim-colorscheme'
+Plugin 'flazz/vim-colorschemes'
 " Plugin 'scrooloose/syntastic'
 " Plugin 'luchermitte/lh-cpp'
-Plugin 'ctrlpvim/ctrlp'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'w0rp/ale'   "syntax analyzer 
 Plugin 'taglist.vim'
 Plugin 'tpope/vim-fugitive'
@@ -28,7 +28,7 @@ Plugin 'Conque-GDB'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-colorscheme torte
+colorscheme vimbrant
 set shiftwidth=4
 set tabstop=4
 
