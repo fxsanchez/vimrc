@@ -93,5 +93,8 @@ map <leader>t :tabnext<cr>
 map tp :tabprev<cr>
 map tc :tabclose<cr>
 
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
 source ~/.vim/plugins_config.vim
 
