@@ -7,8 +7,9 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Plugin 'Valloric/YouCompleteMe'
-Plugin 'davidhalter/jedi-vim'
+" Plugin 'davidhalter/jedi-vim'
 " Plugin 'altercation/vim-colors-solarized'
+" Plugin 'ryanoasis/vim-devicons'
 Plugin 'benmills/vimux'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'scrooloose/nerdtree'
@@ -25,19 +26,23 @@ Plugin 'w0rp/ale'   "syntax analyzer
 Plugin 'taglist.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'pangloss/vim-javascript'
+Plugin 'Shougo/vimshell'
+Plugin 'Shougo/vimproc'
+Plugin 'heavenshell/vim-pydocstring'
 " Plugin 'Conque-GDB'
 " Plugin 'powerline/powerline'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
 Plugin 'vimwiki/vimwiki'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-colorscheme vimbrant
 " colorscheme torte
+colorscheme vimbrant
 " colorscheme luna-term
 " set background=dark
-
 set shiftwidth=4
 set tabstop=4
 
@@ -111,6 +116,45 @@ let g:ctrlp_cmd = 'CtrlP'
 
 " add a date
 map <leader>d "=strftime("%m/%d/%Y")<CR>P
+
+" Google python style
+" Indent Python in the Google way.
+
+setlocal indentexpr=GetGooglePythonIndent(v:lnum)
+
+let s:maxoff = 50 " maximum number of lines to look backwards.
+
+function GetGooglePythonIndent(lnum)
+
+  " Indent inside parens.
+  " Align with the open paren unless it is at the end of the line.
+  " E.g.
+  "   open_paren_not_at_EOL(100,
+  "                         (200,
+  "                          300),
+  "                         400)
+  "   open_paren_at_EOL(
+  "       100, 200, 300, 400)
+  call cursor(a:lnum, 1)
+  let [par_line, par_col] = searchpairpos('(\|{\|\[', '', ')\|}\|\]', 'bW',
+        \ "line('.') < " . (a:lnum - s:maxoff) . " ? dummy :"
+        \ . " synIDattr(synID(line('.'), col('.'), 1), 'name')"
+        \ . " =~ '\\(Comment\\|String\\)$'")
+  if par_line > 0
+    call cursor(par_line, 1)
+    if par_col != col("$") - 1
+      return par_col
+    endif
+  endif
+
+  " Delegate the rest to the original function.
+  return GetPythonIndent(a:lnum)
+
+endfunction
+
+let pyindent_nested_paren="&sw*2"
+let pyindent_open_paren="&sw*2"
+
 
 source ~/.vim/plugins_config.vim
 
