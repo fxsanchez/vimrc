@@ -35,7 +35,7 @@ Plugin 'heavenshell/vim-pydocstring'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
 Plugin 'vimwiki/vimwiki'
-
+Plugin 'lervag/vimtex'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
